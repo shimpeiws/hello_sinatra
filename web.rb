@@ -1,16 +1,11 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require "sinatra/json"
+require 'erb'
+require 'open-uri'
+require 'json'
+
 get '/' do
-  'Hello world!(restart)'
-end
-
-get '/param/:id' do
-  "param test [id = #{params[:id]}]"
-end
-
-get '/api' do
-  data = { foo: "bar" }
-  json data
+  erb :index
 end
 
