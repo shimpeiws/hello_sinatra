@@ -3,5 +3,12 @@ hello_sinatra
 
 # TODO
 
-* Mongo DBを使ってCRUD
-* 複雑なルーティング
+## ルーティング
+* ~~複雑なルーティング~~
+* リダイレクト
+
+## DB
+* Mongo DB・MySQLを使ってCRUD
+
+## セッションなど
+* クッキー・セッション
