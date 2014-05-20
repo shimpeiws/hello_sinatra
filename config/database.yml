@@ -1,0 +1,7 @@
+development:
+  adapter: mysql2
+  database: helloSinatra
+  host: localhost
+  username: root
+  password: root
+  encoding: utf8

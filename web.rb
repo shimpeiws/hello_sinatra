@@ -4,6 +4,22 @@ require "sinatra/json"
 require 'erb'
 require 'open-uri'
 require 'json'
+require 'active_record'
+require 'mysql2'
+
+# DB設定ファイルの読み込み
+ActiveRecord::Base.configurations = YAML.load_file('config/database.yml')
+ActiveRecord::Base.establish_connection(:development)
+
+class Topic < ActiveRecord::Base
+end
+
+# 最新トピック10件分を取得
+get '/topics.json' do
+  content_type :json, :charset => 'utf-8'
+  topics = Topic.order("created_at DESC").limit(10)
+  topics.to_json(:root => false)
+end
 
 # beforeフィルタ
 before do
