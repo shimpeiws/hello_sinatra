@@ -5,6 +5,11 @@ require 'erb'
 require 'open-uri'
 require 'json'
 
+# beforeフィルタ
+before do
+  @in_before_filter = "before filter"
+end
+
 get '/' do
   #  インスタンス変数で渡す
   @bar = "bar"
@@ -37,4 +42,14 @@ end
 # 正規表現ありのroute
 get %r{/(sp|gr)eedy} do
   "You got caught in the greedy route!"
+end
+
+# リダイレクト
+get '/redirect' do
+  redirect 'http://www.google.com'
+end
+
+# views配下のサブフォルダも指定可能
+get '/views_sub' do
+  erb '/user/profile'.to_sym
 end
