@@ -7,12 +7,11 @@ require 'json'
 require 'active_record'
 require 'mysql2'
 
+require_relative 'models/init'
+
 # DB設定ファイルの読み込み
 ActiveRecord::Base.configurations = YAML.load_file('config/database.yml')
 ActiveRecord::Base.establish_connection(:development)
-
-class Topic < ActiveRecord::Base
-end
 
 # 最新トピック10件分を取得
 get '/topics.json' do
