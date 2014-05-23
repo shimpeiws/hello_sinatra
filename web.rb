@@ -20,6 +20,12 @@ get '/topics.json' do
   topics.to_json(:root => false)
 end
 
+# 最新トピックのリスト表示
+get '/topics' do
+    @topics = Topic.order("created_at DESC").limit(10)
+    erb '/topic/index'.to_sym
+end
+
 # beforeフィルタ
 before do
   @in_before_filter = "before filter"
